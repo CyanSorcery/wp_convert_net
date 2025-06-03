@@ -1,0 +1,14 @@
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\minipak_gen.exe
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\minipak_gen.deps.json
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\minipak_gen.runtimeconfig.json
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\minipak_gen.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\minipak_gen.pdb
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\minipak_gen.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\minipak_gen.AssemblyInfoInputs.cache
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\minipak_gen.AssemblyInfo.cs
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\minipak_gen.csproj.CoreCompileInputs.cache
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\minipak_gen.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\refint\minipak_gen.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\minipak_gen.pdb
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\minipak_gen.genruntimeconfig.cache
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Release\net9.0\win-x64\ref\minipak_gen.dll

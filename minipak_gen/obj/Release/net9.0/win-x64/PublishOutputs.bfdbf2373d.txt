@@ -1,0 +1,2 @@
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\minipak_gen.pdb
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\minipak_gen.exe
