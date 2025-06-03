@@ -12,6 +12,18 @@
           "bin/placeholder/Kitsusu.dll": {}
         }
       }
+    },
+    "net9.0/win-x64": {
+      "Kitsusu/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Kitsusu.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Kitsusu.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -89,6 +101,11 @@
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "win-x64": {
+        "#import": []
       }
     }
   }

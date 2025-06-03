@@ -4,9 +4,9 @@ class Tiles
 	//The tiles are in the order of TL, TR, BL, BR
 	//If unset, all tiles are 0. These are "void tiles" and can be overwritten,
 	//with the exception of entry 0
-	private int[][] lut = new int[256][];
+	private readonly int[][] LUT = new int[256][];
 
-	public static readonly int[] blob_wang_indices = [
+	public static readonly int[] BlobWangIndices = [
 		0,0,1,1,0,0,1,1,
 		2,2,3,4,2,2,3,4,
 		5,5,6,6,5,5,7,7,
@@ -42,7 +42,7 @@ class Tiles
 	];
 	
 	//This remaps the tiles from the lookup table to generate walls
-	public static readonly int[] metaremap_walls = [11,12,13,14,16,17,18,19,
+	public static readonly int[] MetaRemapWalls = [11,12,13,14,16,17,18,19,
 		20,21,22,23,24,25,26,27,
 		28,29,30,31,32,42,43,45,
 		46,48,49,50,51,52,53,54,
@@ -50,7 +50,7 @@ class Tiles
 		63,64,65,75,76,77,78];
 
 	//This remaps to generate lava tiles
-	public static readonly int[] metaremap_lava = [80,81,82,83,84,85,86,87,
+	public static readonly int[] MetaRemapLava = [80,81,82,83,84,85,86,87,
 		88,89,90,91,92,93,94,95,
 		96,97,103,104,107,108,109,110,
 		112,113,114,115,116,117,118,119,
@@ -58,7 +58,7 @@ class Tiles
 		128,129,130,131,132,133,134];
 
 	//This remaps to generate water tiles
-	public static readonly int[] metaremap_water = [135,136,139,140,141,142,144,145,
+	public static readonly int[] MetaRemapWater = [135,136,139,140,141,142,144,145,
 		146,147,148,149,150,151,152,153,
 		154,155,156,157,158,159,160,161,
 		162,163,164,165,166,167,168,169,
@@ -68,131 +68,131 @@ class Tiles
 	private Tiles()
 	{
 		//Blank tile player can step on
-		lut[ElementToBitmask(1, 0)] = GetMirroredTile(16);
+		LUT[ElementToBitmask(1, 0)] = GetMirroredTile(16);
 		//Second blank tile
-		lut[255] = GetMirroredTile(17);
+		LUT[255] = GetMirroredTile(17);
 
 		//Player tile
-		lut[ElementToBitmask(1, 1)] = GetFullTile(218);
+		LUT[ElementToBitmask(1, 1)] = GetFullTile(218);
 
 		//Heart (on)
-		lut[ElementToBitmask(3, 0)] = GetMirroredTile(19);
+		LUT[ElementToBitmask(3, 0)] = GetMirroredTile(19);
 		//Heart (off)
-		lut[ElementToBitmask(4, 0)] = GetMirroredTile(20);
+		LUT[ElementToBitmask(4, 0)] = GetMirroredTile(20);
 
 		//Diamond (on)
-		lut[ElementToBitmask(3, 1)] = GetMirroredTile(21);
+		LUT[ElementToBitmask(3, 1)] = GetMirroredTile(21);
 		//Diamond (off)
-		lut[ElementToBitmask(4, 1)] = GetMirroredTile(22);
+		LUT[ElementToBitmask(4, 1)] = GetMirroredTile(22);
 
 		//Triangle (on)
-		lut[ElementToBitmask(3, 2)] = GetMirroredTile(23);
+		LUT[ElementToBitmask(3, 2)] = GetMirroredTile(23);
 		//Triangle (off)
-		lut[ElementToBitmask(4, 2)] = GetMirroredTile(24);
+		LUT[ElementToBitmask(4, 2)] = GetMirroredTile(24);
 
 		//Coin (on)
-		lut[ElementToBitmask(3, 3)] = GetMirroredTile(25);
+		LUT[ElementToBitmask(3, 3)] = GetMirroredTile(25);
 		//Coin (off)
-		lut[ElementToBitmask(4, 3)] = GetMirroredTile(26);
+		LUT[ElementToBitmask(4, 3)] = GetMirroredTile(26);
 
 		//Octoblock (on)
-		lut[ElementToBitmask(10, 2)] = GetMirroredTile(27);
+		LUT[ElementToBitmask(10, 2)] = GetMirroredTile(27);
 		//Octoblock (off)
-		lut[ElementToBitmask(10, 3)] = GetMirroredTile(28);
+		LUT[ElementToBitmask(10, 3)] = GetMirroredTile(28);
 
 		//Zapper (cyan)
-		lut[ElementToBitmask(7, 1)] = GetMirroredTile(29);
+		LUT[ElementToBitmask(7, 1)] = GetMirroredTile(29);
 		//Zapper (magenta)
-		lut[ElementToBitmask(7, 0)] = GetMirroredTile(30);
+		LUT[ElementToBitmask(7, 0)] = GetMirroredTile(30);
 		//Zapper (yellow)
-		lut[ElementToBitmask(7, 2)] = GetMirroredTile(31);
+		LUT[ElementToBitmask(7, 2)] = GetMirroredTile(31);
 
 		//Slime trap
-		lut[ElementToBitmask(9, 4)] = GetMirroredTile(48);
+		LUT[ElementToBitmask(9, 4)] = GetMirroredTile(48);
 
 		//Generic lock block
-		lut[ElementToBitmask(10, 4)] = GetMirroredTile(51);
+		LUT[ElementToBitmask(10, 4)] = GetMirroredTile(51);
 		//Generic key (floor)
-		lut[ElementToBitmask(12, 1)] = GetMirroredTile(18);
+		LUT[ElementToBitmask(12, 1)] = GetMirroredTile(18);
 
 		//Heart key (floor)
-		lut[ElementToBitmask(2, 0)] = GetMirroredTile(52);
+		LUT[ElementToBitmask(2, 0)] = GetMirroredTile(52);
 		//Diamond key (floor)
-		lut[ElementToBitmask(2, 1)] = GetMirroredTile(53);
+		LUT[ElementToBitmask(2, 1)] = GetMirroredTile(53);
 		//Triangle key (floor)
-		lut[ElementToBitmask(2, 2)] = GetMirroredTile(54);
+		LUT[ElementToBitmask(2, 2)] = GetMirroredTile(54);
 		//Coin key (floor)
-		lut[ElementToBitmask(2, 3)] = GetMirroredTile(55);
+		LUT[ElementToBitmask(2, 3)] = GetMirroredTile(55);
 
 		//Octogems
 		for (int i = 0; i < 8; i++)
-			lut[ElementToBitmask(15, i)] = GetMirroredTile(56 + i);
+			LUT[ElementToBitmask(15, i)] = GetMirroredTile(56 + i);
 
 		//Normal state
-		lut[ElementToBitmask(8, 0)] = GetMirroredTile(80);
+		LUT[ElementToBitmask(8, 0)] = GetMirroredTile(80);
 		//Fire state
-		lut[ElementToBitmask(8, 1)] = GetMirroredTile(81);
+		LUT[ElementToBitmask(8, 1)] = GetMirroredTile(81);
 		//Ice state
-		lut[ElementToBitmask(8, 2)] = GetMirroredTile(82);
+		LUT[ElementToBitmask(8, 2)] = GetMirroredTile(82);
 
 		//Red portal
-		lut[ElementToBitmask(5, 0)] = GetFullTile(88);
+		LUT[ElementToBitmask(5, 0)] = GetFullTile(88);
 		//Green portal
-		lut[ElementToBitmask(5, 1)] = GetFullTile(90);
+		LUT[ElementToBitmask(5, 1)] = GetFullTile(90);
 		//Blue portal
-		lut[ElementToBitmask(5, 2)] = GetFullTile(92);
+		LUT[ElementToBitmask(5, 2)] = GetFullTile(92);
 		//Yellow portal
-		lut[ElementToBitmask(5, 3)] = GetFullTile(94);
+		LUT[ElementToBitmask(5, 3)] = GetFullTile(94);
 
 		//Conveyer east
-		lut[ElementToBitmask(6, 0)] = GetFullTile(112);
+		LUT[ElementToBitmask(6, 0)] = GetFullTile(112);
 		//Conveyer north
-		lut[ElementToBitmask(6, 1)] = GetFullTile(114);
+		LUT[ElementToBitmask(6, 1)] = GetFullTile(114);
 		//Conveyer west
-		lut[ElementToBitmask(6, 2)] = GetFullTile(116);
+		LUT[ElementToBitmask(6, 2)] = GetFullTile(116);
 		//Conveyer south
-		lut[ElementToBitmask(6, 3)] = GetFullTile(118);
+		LUT[ElementToBitmask(6, 3)] = GetFullTile(118);
 
 		//Ice block
-		lut[ElementToBitmask(10, 0)] = GetFullTile(120);
+		LUT[ElementToBitmask(10, 0)] = GetFullTile(120);
 
 		//Ice floor
-		lut[ElementToBitmask(9, 3)] = GetFullTile(122);
+		LUT[ElementToBitmask(9, 3)] = GetFullTile(122);
 
 		//Cracked floor
-		lut[ElementToBitmask(9, 0)] = GetFullTile(124);
+		LUT[ElementToBitmask(9, 0)] = GetFullTile(124);
 
 		//Lava floor
-		lut[ElementToBitmask(9, 1)] = GetSingleTile(191);
+		LUT[ElementToBitmask(9, 1)] = GetSingleTile(191);
 		//Water tile
-		lut[ElementToBitmask(9, 2)] = GetSingleTile(207);
+		LUT[ElementToBitmask(9, 2)] = GetSingleTile(207);
 
 		//Slime tile (normal)
-		lut[240] = GetFullTile(218);
+		LUT[240] = GetFullTile(218);
 		//Slime tile (fire)
-		lut[241] = GetFullTile(220);
+		LUT[241] = GetFullTile(220);
 		//Slime tile (ice)
-		lut[242] = GetFullTile(222);
+		LUT[242] = GetFullTile(222);
 
 		//Cracked floor (alternate)
-		lut[254] = GetFullTile(126);
+		LUT[254] = GetFullTile(126);
 
 		//Closed slime trap
-		lut[253] = GetMirroredTile(49);
+		LUT[253] = GetMirroredTile(49);
 
 		//pit
-		lut[252] = GetMirroredTile(50);
+		LUT[252] = GetMirroredTile(50);
 
 		//Add the metaremaps to the lookup table
-		AddMetaremap(metaremap_walls, true);
-		AddMetaremap(metaremap_lava, false, 176, true);
-		AddMetaremap(metaremap_water, false, 192, true);
+		AddMetaremap(MetaRemapWalls, true);
+		AddMetaremap(MetaRemapLava, false, 176, true);
+		AddMetaremap(MetaRemapWater, false, 192, true);
 
 		//Fill out any remaining tiles with a blank set
 		int[] _dummy_set = GetSingleTile(15);
 		for (int i = 1; i < 256; i++)
-			if (lut[i][0] == 0)
-				lut[i] = _dummy_set;
+			if (LUT[i][0] == 0)
+				LUT[i] = _dummy_set;
 	}
 
 	private void AddMetaremap(int[] _metaremap, bool _clear_15th, int _add_val = 0, bool _do_water_lava = false)
@@ -219,23 +219,12 @@ class Tiles
 
 		//Now, add them to the lookup table
 		for (int i = 0; i < 47; i++)
-			lut[_metaremap[i]] = _blob_wang_tiles[i];
-	}
-	public static int ElementToBitmask(int _ele_id, int _sub_id)
-	{
-		return _ele_id | (_sub_id << 5);
+			LUT[_metaremap[i]] = _blob_wang_tiles[i];
 	}
 
-	private static int[] GetMirroredTile(int _tile_id)
-	{
-		return [253, _tile_id, 253, _tile_id + 16];
-	}
-	private static int[] GetFullTile(int _tile_id)
-	{
-		return [_tile_id, _tile_id + 1, _tile_id + 16, _tile_id + 17];
-	}
-	private static int[] GetSingleTile(int _tile_id)
-	{
-		return [_tile_id, _tile_id, _tile_id, _tile_id];
-	}
+	public static int ElementToBitmask(int eleID, int subID) => eleID | (subID << 5);
+	private static int[] GetMirroredTile(int tileID) => [253, tileID, 253, tileID + 16];
+	private static int[] GetFullTile(int tileID) => [tileID, tileID + 1, tileID + 16, tileID + 17];
+	private static int[] GetSingleTile(int tileID) => [tileID, tileID, tileID, tileID];
+
 }

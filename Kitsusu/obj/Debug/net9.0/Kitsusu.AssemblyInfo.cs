@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kitsusu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02726c2431f00ca4856f6ab83cc129979b8d32f0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8caf3e30377aa3e9585dd11a207d783299ea564b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kitsusu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kitsusu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

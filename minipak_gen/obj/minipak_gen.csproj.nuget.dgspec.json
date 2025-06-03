@@ -61,6 +61,11 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
       }
     },
     "D:\\Dropbox\\Homebase\\pico8\\wp_convert_net\\minipak_gen\\minipak_gen.csproj": {
@@ -123,6 +128,11 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

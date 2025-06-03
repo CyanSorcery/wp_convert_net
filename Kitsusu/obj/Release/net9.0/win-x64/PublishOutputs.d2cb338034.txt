@@ -1,0 +1,5 @@
+D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Release\net9.0\win-x64\publish\Kitsusu.exe
+D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Release\net9.0\win-x64\publish\Kitsusu.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Release\net9.0\win-x64\publish\Kitsusu.deps.json
+D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Release\net9.0\win-x64\publish\Kitsusu.runtimeconfig.json
+D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Release\net9.0\win-x64\publish\Kitsusu.pdb

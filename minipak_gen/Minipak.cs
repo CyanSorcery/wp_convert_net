@@ -1,16 +1,16 @@
-using System.IO.Compression;
 using Kitsusu.DataStructures;
+using Kitsusu.Utils;
 
 class MiniPak
 {
-	const float min_version = 13f;
+	const float MinVersion = 13f;
 	public string pak_name { get; set; } = "No Name";
-	public float file_version { get; set; } = min_version;
+	public float file_version { get; set; } = MinVersion;
 	public string? pak_id { get; set; }
 	public MiniWorld[] pak_worlds { get; set; } = [new MiniWorld()];
 
 	//These are the save slots that are currently in use (prevents overlaps)
-	private bool[] save_slots = Enumerable.Repeat(false, 60).ToArray();
+	private readonly bool[] SaveSlots = [.. Enumerable.Repeat(false, 60)];
 
 
 	public void ToPico8()
@@ -18,8 +18,8 @@ class MiniPak
 		try
 		{
 			//Don't load this if it's too old
-			if (file_version < min_version)
-				throw new Exception($"Worldpak is too old. Must be version {min_version} or newer, but worldpak is version {file_version}.");
+			if (file_version < MinVersion)
+				throw new Exception($"Worldpak is too old. Must be version {MinVersion} or newer, but worldpak is version {file_version}.");
 
 			//Count up how many stages there are
 			int stage_count = 0;
@@ -38,10 +38,10 @@ class MiniPak
 					//Prevent the save ID from being out of range
 					stage.save_slot = Math.Clamp((int)stage.stage_id, 0, 59);
 
-					if (save_slots[stage.save_slot])
+					if (SaveSlots[stage.save_slot])
 						throw new Exception($"Stage {stage.stage_name} uses save slot {stage.save_slot} which is already in use!");
 
-					save_slots[stage.save_slot] = true;
+					SaveSlots[stage.save_slot] = true;
 
 					//Convert this into a string for pico8
 					stage.ToPico8();
@@ -65,7 +65,7 @@ public class MiniWorld
 public class MiniStage
 {
 	//The maximum amount of time
-	const float max_time = 599.9999f;
+	const float MaxTime = 599.9999f;
 
 	//Various things from the full worldpak
 	public string stage_name { get; set; } = "No Name";
@@ -73,8 +73,8 @@ public class MiniStage
 	public double stage_width { get; set; } = 1;
 	public double stage_height { get; set; } = 1;
 	public double stage_id { get; set; } = 0;
-	public double stage_target_time { get; set; } = max_time;
-	public double stage_dev_time { get; set; } = max_time;
+	public double stage_target_time { get; set; } = MaxTime;
+	public double stage_dev_time { get; set; } = MaxTime;
 	public string stage_replay_data { get; set; } = "";
 	public double stage_hint_count { get; set; } = 0;
 	public string stage_data { get; set; } = "";
@@ -82,7 +82,7 @@ public class MiniStage
 	public int save_slot { get; set; } = 0;
 
 	//This is the string that pico8 will read
-	public string ministage { get; set; } = "";
+	public string MiniString { get; set; } = "";
 
 	public void ToPico8()
 	{
@@ -93,21 +93,20 @@ public class MiniStage
 		//Start creating the ministage data
 
 		//Stage name
-		ministage += PicoLabel(stage_name);
+		MiniString += PicoLabel(stage_name);
 		//Stage author
-		ministage += PicoLabel(stage_author);
+		MiniString += PicoLabel(stage_author);
 		//Stage width (minus 1)
-		ministage += Math.Clamp((int)stage_width - 1, 0, 15).ToString("x");
+		MiniString += Math.Clamp((int)stage_width - 1, 0, 15).ToString("x");
 		//Stage save slot
-		ministage += save_slot.ToString("x").PadLeft(2, '0');
+		MiniString += save_slot.ToString("x").PadLeft(2, '0');
 		//The stage target time
-		ministage += PicoTimeFormat(stage_target_time);
+		MiniString += PicoTimeFormat(stage_target_time);
 		//The stage dev time
-		ministage += PicoTimeFormat(stage_dev_time);
+		MiniString += PicoTimeFormat(stage_dev_time);
 
 		//Now, we need to start decoding the stage data
-		byte[] _stage_data_bytes = DecompressFromBase64(stage_data);
-		string _stage_data_string = Convert.ToHexStringLower(_stage_data_bytes);
+		byte[] _stage_data_bytes = DataConversion.DecompressFromBase64(stage_data);
 
 		//Copy the puzzle width and height
 		int _puzz_w = (int)stage_width;
@@ -239,7 +238,7 @@ public class MiniStage
 				//If the center tile is 0, skip
 				if (_wall_ele_grid.Get(_x, _y) != 0)
 				{
-					_tile_id = Tiles.blob_wang_indices[
+					_tile_id = Tiles.BlobWangIndices[
 						_wall_ele_grid.Get(_xl, _yt) |
 						(_wall_ele_grid.Get(_x, _yt) << 1) |
 						(_wall_ele_grid.Get(_xr, _yt) << 2) |
@@ -251,13 +250,13 @@ public class MiniStage
 					];
 
 					if (_tile_id < 255)
-						_ele_grid.Set(_x, _y, Tiles.metaremap_walls[_tile_id]);
+						_ele_grid.Set(_x, _y, Tiles.MetaRemapWalls[_tile_id]);
 				}
 			}
 		}
 
 		//Now do the autotiling for lava and water tiles
-		Dictionary<int, int[]> _metaremap = new() { { 41, Tiles.metaremap_lava }, { 73, Tiles.metaremap_water } };
+		Dictionary<int, int[]> _metaremap = new() { { 41, Tiles.MetaRemapLava }, { 73, Tiles.MetaRemapWater } };
 		foreach (var (_id, _remap) in _metaremap)
 		{
 			_wall_ele_grid.Fill(0);
@@ -282,7 +281,7 @@ public class MiniStage
 					//If the center tile is 0, skip
 					if (_wall_ele_grid.Get(_x, _y) != 0)
 					{
-						_tile_id = Tiles.blob_wang_indices[
+						_tile_id = Tiles.BlobWangIndices[
 							_wall_ele_grid.Get(_xl, _yt) |
 							(_wall_ele_grid.Get(_x, _yt) << 1) |
 							(_wall_ele_grid.Get(_xr, _yt) << 2) |
@@ -308,12 +307,12 @@ public class MiniStage
 
 
 		//add the hint arrows, object list, number of tiles, and the stage data
-		ministage += PicoHintArrows(_player_start_x, _player_start_y)
+		MiniString += PicoHintArrows(_player_start_x, _player_start_y)
 			+ _obj_str
 			+ _tile_count.ToString("x").PadLeft(2, '0')
 			+ _ele_grid.Pack();
 
-		Console.WriteLine(ministage);
+		Console.WriteLine(MiniString);
 	}
 
 	private string PicoHintArrows(int _start_x, int _start_y)
@@ -322,7 +321,7 @@ public class MiniStage
 		if (stage_replay_data == "") return "0";
 
 		//Get the replay bytes
-		byte[] _replay_data = DecompressFromBase64(stage_replay_data);
+		byte[] _replay_data = DataConversion.DecompressFromBase64(stage_replay_data);
 
 		//Parse the hint arrows. Each byte contains two hint arrows, with one potential extra that we ignore
 		List<byte> _parsed_hints = [];
@@ -360,15 +359,6 @@ public class MiniStage
 			_start_y -= (int)Math.Round(Math.Sin(_angle));
 		}
 		return _fin;
-	}
-	
-	private static byte[] DecompressFromBase64(string _b64)
-	{
-		using MemoryStream _o = new(Convert.FromBase64String(_b64));
-		using ZLibStream _z = new(_o, CompressionMode.Decompress);
-		using MemoryStream _m = new();
-		_z.CopyTo(_m);
-		return _m.ToArray();
 	}
 
 	private static string PicoLabel(string _str)
