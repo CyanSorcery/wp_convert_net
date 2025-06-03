@@ -9,7 +9,7 @@ class Program
         Console.WriteLine("Blobun Worldpak -> Minipak Converter");
         string _local_app_data = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         string _worldpak_path;
-        // If no worldpak was provided, use our default path
+        // If no worldpak was provided, use our default path. Otherwise, use the one passed in
         if (args.Length == 0)
         {
             Console.WriteLine("No worldpak provided. Using default...");
@@ -17,7 +17,6 @@ class Program
         }
         else
         {
-            //Check if the worldpak exists
             _worldpak_path = args[0];
         }
 
