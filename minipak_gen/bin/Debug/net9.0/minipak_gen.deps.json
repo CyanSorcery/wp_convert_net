@@ -7,14 +7,30 @@
   "targets": {
     ".NETCoreApp,Version=v9.0": {
       "minipak_gen/1.0.0": {
+        "dependencies": {
+          "Kitsusu": "1.0.0"
+        },
         "runtime": {
           "minipak_gen.dll": {}
+        }
+      },
+      "Kitsusu/1.0.0": {
+        "runtime": {
+          "Kitsusu.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
   },
   "libraries": {
     "minipak_gen/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Kitsusu/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

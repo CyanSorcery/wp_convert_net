@@ -1,4 +1,5 @@
 using System.IO.Compression;
+using Kitsusu.DataStructures;
 
 class MiniPak
 {
@@ -125,7 +126,7 @@ public class MiniStage
 		string[] _floor_portals = ["", "", "", ""];
 
 		//Create a grid to hold the puzzle elements, with padding to hold the borders
-		FakeDSGrid _ele_grid = new(_puzz_w + 2, _puzz_h + 2);
+		Grid _ele_grid = new(_puzz_w + 2, _puzz_h + 2);
 
 		//How many tiles the player must touch in this puzzle
 		int _tile_count = 0;
@@ -205,7 +206,7 @@ public class MiniStage
 			if (_tile_id > 0) _tile_count++;
 
 			//Place the tile into the grid
-			_ele_grid.Grid[_dst_x, _dst_y] = _tile_id;
+			_ele_grid.Set(_dst_x, _dst_y, _tile_id);
 		}
 
 		//Increment these for the future grids
@@ -213,13 +214,13 @@ public class MiniStage
 		_puzz_h += 2;
 
 		//Create an autotile grid to use as reference for wall generation
-		FakeDSGrid _wall_ele_grid = new(_puzz_w, _puzz_h, 0);
+		Grid _wall_ele_grid = new(_puzz_w, _puzz_h, 0);
 		_wall_ele_grid.CopyFrom(_ele_grid, 0, 0, _puzz_w, _puzz_h, 0, 0);
 
 		//For each element of the grid, prep it for autotiling
 		for (int _x = 0; _x < _puzz_w; _x++)
 			for (int _y = 0; _y < _puzz_h; _y++)
-				_wall_ele_grid.Grid[_x, _y] = _wall_ele_grid.Grid[_x, _y] >= 1 ? 0 : 1;
+				_wall_ele_grid.Set(_x, _y, _wall_ele_grid.Get(_x, _y) >= 1 ? 0 : 1);
 
 		//Now, perform the blob wang autotile on this
 		//Ashe and Roxy note: this is a fair bit slower than what's in the game,
@@ -236,21 +237,21 @@ public class MiniStage
 				_yb = Math.Min(_y + 1, _puzz_h - 1);
 
 				//If the center tile is 0, skip
-				if (_wall_ele_grid.Grid[_x, _y] != 0)
+				if (_wall_ele_grid.Get(_x, _y) != 0)
 				{
 					_tile_id = Tiles.blob_wang_indices[
-						_wall_ele_grid.Grid[_xl, _yt] |
-						(_wall_ele_grid.Grid[_x, _yt] << 1) |
-						(_wall_ele_grid.Grid[_xr, _yt] << 2) |
-						(_wall_ele_grid.Grid[_xl, _y] << 3) |
-						(_wall_ele_grid.Grid[_xr, _y] << 4) |
-						(_wall_ele_grid.Grid[_xl, _yb] << 5) |
-						(_wall_ele_grid.Grid[_x, _yb] << 6) |
-						(_wall_ele_grid.Grid[_xr, _yb] << 7)
+						_wall_ele_grid.Get(_xl, _yt) |
+						(_wall_ele_grid.Get(_x, _yt) << 1) |
+						(_wall_ele_grid.Get(_xr, _yt) << 2) |
+						(_wall_ele_grid.Get(_xl, _y) << 3) |
+						(_wall_ele_grid.Get(_xr, _y) << 4) |
+						(_wall_ele_grid.Get(_xl, _yb) << 5) |
+						(_wall_ele_grid.Get(_x, _yb) << 6) |
+						(_wall_ele_grid.Get(_xr, _yb) << 7)
 					];
 
 					if (_tile_id < 255)
-						_ele_grid.Grid[_x, _y] = Tiles.metaremap_walls[_tile_id];
+						_ele_grid.Set(_x, _y, Tiles.metaremap_walls[_tile_id]);
 				}
 			}
 		}
@@ -266,7 +267,7 @@ public class MiniStage
 			//For each element of the grid, prep it for autotiling
 			for (int _x = 0; _x < _puzz_w; _x++)
 				for (int _y = 0; _y < _puzz_h; _y++)
-					_wall_ele_grid.Grid[_x, _y] = _wall_ele_grid.Grid[_x, _y] == _id ? 1 : 0;
+					_wall_ele_grid.Set(_x, _y, _wall_ele_grid.Get(_x, _y) == _id ? 1 : 0);
 
 			for (int _x = 0; _x < _puzz_w; _x++)
 			{
@@ -279,21 +280,21 @@ public class MiniStage
 					_yb = Math.Min(_y + 1, _puzz_h - 1);
 
 					//If the center tile is 0, skip
-					if (_wall_ele_grid.Grid[_x, _y] != 0)
+					if (_wall_ele_grid.Get(_x, _y) != 0)
 					{
 						_tile_id = Tiles.blob_wang_indices[
-							_wall_ele_grid.Grid[_xl, _yt] |
-							(_wall_ele_grid.Grid[_x, _yt] << 1) |
-							(_wall_ele_grid.Grid[_xr, _yt] << 2) |
-							(_wall_ele_grid.Grid[_xl, _y] << 3) |
-							(_wall_ele_grid.Grid[_xr, _y] << 4) |
-							(_wall_ele_grid.Grid[_xl, _yb] << 5) |
-							(_wall_ele_grid.Grid[_x, _yb] << 6) |
-							(_wall_ele_grid.Grid[_xr, _yb] << 7)
+							_wall_ele_grid.Get(_xl, _yt) |
+							(_wall_ele_grid.Get(_x, _yt) << 1) |
+							(_wall_ele_grid.Get(_xr, _yt) << 2) |
+							(_wall_ele_grid.Get(_xl, _y) << 3) |
+							(_wall_ele_grid.Get(_xr, _y) << 4) |
+							(_wall_ele_grid.Get(_xl, _yb) << 5) |
+							(_wall_ele_grid.Get(_x, _yb) << 6) |
+							(_wall_ele_grid.Get(_xr, _yb) << 7)
 						];
 
 						if (_tile_id < 255)
-							_ele_grid.Grid[_x, _y] = _remap[_tile_id];
+							_ele_grid.Set(_x, _y, _remap[_tile_id]);
 					}
 				}
 			}

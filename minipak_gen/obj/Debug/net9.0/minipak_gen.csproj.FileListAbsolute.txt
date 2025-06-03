@@ -12,3 +12,11 @@ D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\refint\min
 D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_gen.pdb
 D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_gen.genruntimeconfig.cache
 D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\ref\minipak_gen.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\Kitsusu.deps.json
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\Kitsusu.runtimeconfig.json
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\Kitsusu.exe
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\Kitsusu.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\Kitsusu.pdb
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_gen.csproj.AssemblyReference.cache
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_gen.sourcelink.json
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_.66D6869A.Up2Date
