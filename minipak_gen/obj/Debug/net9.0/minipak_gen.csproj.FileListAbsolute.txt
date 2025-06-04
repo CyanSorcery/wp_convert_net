@@ -20,3 +20,17 @@ D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\Kitsusu.pd
 D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_gen.csproj.AssemblyReference.cache
 D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_gen.sourcelink.json
 D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\obj\Debug\net9.0\minipak_.66D6869A.Up2Date
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\System.CommandLine.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\cs\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\de\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\es\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\fr\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\it\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\ja\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\ko\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\pl\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\pt-BR\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\ru\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\tr\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\zh-Hans\System.CommandLine.resources.dll
+D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Debug\net9.0\zh-Hant\System.CommandLine.resources.dll

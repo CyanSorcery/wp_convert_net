@@ -13,7 +13,7 @@ class MiniPak
 	private readonly bool[] SaveSlots = [.. Enumerable.Repeat(false, 60)];
 
 
-	public void ToPico8()
+	public void ToPico8(string destLevel, string? destMap)
 	{
 		try
 		{
@@ -64,29 +64,34 @@ class MiniPak
 			}
 			outputString += "}";
 
-			File.WriteAllText("r_levels.lua", outputString);
+			File.WriteAllText(destLevel, outputString);
 
 			Console.WriteLine($"Converted {stage_count} stage(s) across {pak_worlds.Length} world(s)");
 
-			//Get ready to convert all the puzzle element/tile lookups into a pico8 map
-			Grid metatileGrid = new(128, 32, 0);
+			if (destMap != null)
+			{
+				//Get ready to convert all the puzzle element/tile lookups into a pico8 map
+				Grid metatileGrid = new(128, 32, 0);
 
-			int finX, finY;
-			int[] finLUT;
+				int finX, finY;
+				int[] finLUT;
 
-			for (int x = 0; x < 16; x++)
-				for (int y = 0; y < 16; y++)
-				{
-					finX = (48 + x) * 2;
-					finY = y * 2;
-					finLUT = Tiles.GetLUT((x * 16) + y);
-					metatileGrid.Set(finX, finY, finLUT[0]);
-					metatileGrid.Set(finX + 1, finY, finLUT[1]);
-					metatileGrid.Set(finX, finY + 1, finLUT[2]);
-					metatileGrid.Set(finX + 1, finY + 1, finLUT[3]);
-				}
+				for (int x = 0; x < 16; x++)
+					for (int y = 0; y < 16; y++)
+					{
+						finX = (48 + x) * 2;
+						finY = y * 2;
+						finLUT = Tiles.GetLUT((x * 16) + y);
+						metatileGrid.Set(finX, finY, finLUT[0]);
+						metatileGrid.Set(finX + 1, finY, finLUT[1]);
+						metatileGrid.Set(finX, finY + 1, finLUT[2]);
+						metatileGrid.Set(finX + 1, finY + 1, finLUT[3]);
+					}
 
-			File.WriteAllText("map_lut.p8", $"pico-8 cartridge // http://www.pico-8.com\r\nversion 42\r\n__map__\r\n{metatileGrid.Pack(true)}");
+				File.WriteAllText(destMap, $"pico-8 cartridge // http://www.pico-8.com\r\nversion 42\r\n__map__\r\n{metatileGrid.Pack(true)}");
+				Console.WriteLine($"Wrote map file to {destMap}");
+
+			}
 
 		}
 		catch (Exception e)

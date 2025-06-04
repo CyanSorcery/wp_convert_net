@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "6ulnbPnykp4=",
+  "dgSpecHash": "95zLfSumFtM=",
   "success": true,
   "projectFilePath": "D:\\Dropbox\\Homebase\\pico8\\wp_convert_net\\minipak_gen\\minipak_gen.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\spark\\.nuget\\packages\\system.commandline\\2.0.0-beta4.22272.1\\system.commandline.2.0.0-beta4.22272.1.nupkg.sha512"
+  ],
   "logs": []
 }
