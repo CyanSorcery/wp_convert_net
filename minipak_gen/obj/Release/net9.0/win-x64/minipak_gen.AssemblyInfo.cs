@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("minipak_gen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8caf3e30377aa3e9585dd11a207d783299ea564b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1a52ec341a563ae6a66402269245bf74840b747")]
 [assembly: System.Reflection.AssemblyProductAttribute("minipak_gen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("minipak_gen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

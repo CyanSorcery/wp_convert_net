@@ -1,10 +1,1 @@
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\Kitsusu.exe
 D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\minipak_gen.exe
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\Kitsusu.deps.json
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\Kitsusu.runtimeconfig.json
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\minipak_gen.dll
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\minipak_gen.deps.json
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\minipak_gen.runtimeconfig.json
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\minipak_gen.pdb
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\Kitsusu.dll
-D:\Dropbox\Homebase\pico8\wp_convert_net\minipak_gen\bin\Release\net9.0\win-x64\publish\Kitsusu.pdb

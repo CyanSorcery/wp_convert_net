@@ -1,8 +1,5 @@
-D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Debug\net9.0\Kitsusu.exe
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Debug\net9.0\Kitsusu.deps.json
-D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Debug\net9.0\Kitsusu.runtimeconfig.json
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Debug\net9.0\Kitsusu.dll
-D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\bin\Debug\net9.0\Kitsusu.pdb
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.GeneratedMSBuildEditorConfig.editorconfig
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.AssemblyInfoInputs.cache
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.AssemblyInfo.cs
@@ -10,6 +7,4 @@ D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.csproj
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.sourcelink.json
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.dll
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\refint\Kitsusu.dll
-D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.pdb
-D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\Kitsusu.genruntimeconfig.cache
 D:\Dropbox\Homebase\pico8\wp_convert_net\Kitsusu\obj\Debug\net9.0\ref\Kitsusu.dll

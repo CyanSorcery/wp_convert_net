@@ -5,14 +5,20 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <DebugType>embedded</DebugType>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
   </PropertyGroup>
+  
 
   <ItemGroup>
     <ProjectReference Include="..\Kitsusu\Kitsusu.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1">
+      <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
