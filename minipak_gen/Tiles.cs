@@ -1,10 +1,10 @@
-class Tiles
+public static class Tiles
 {
 	//First entry is the element ID, second is the tiles that'll go there
 	//The tiles are in the order of TL, TR, BL, BR
 	//If unset, all tiles are 0. These are "void tiles" and can be overwritten,
 	//with the exception of entry 0
-	private readonly int[][] LUT = new int[256][];
+	public static readonly Dictionary<int, int[]> LUT = [];
 
 	public static readonly int[] BlobWangIndices = [
 		0,0,1,1,0,0,1,1,
@@ -65,8 +65,12 @@ class Tiles
 		170,171,172,173,174,176,177,178,
 		179,180,181,182,183,184,185];
 
-	private Tiles()
+	static Tiles()
 	{
+		//Pre-fill the dictionary with default values
+		for (int i = 0; i < 256; i++)
+			LUT[i] = [0, 0, 0, 0];
+
 		//Blank tile player can step on
 		LUT[ElementToBitmask(1, 0)] = GetMirroredTile(16);
 		//Second blank tile
@@ -195,7 +199,10 @@ class Tiles
 				LUT[i] = _dummy_set;
 	}
 
-	private void AddMetaremap(int[] _metaremap, bool _clear_15th, int _add_val = 0, bool _do_water_lava = false)
+
+	public static int[] GetLUT(int index) => LUT[index];
+
+	private static void AddMetaremap(int[] _metaremap, bool _clear_15th, int _add_val = 0, bool _do_water_lava = false)
 	{
 		//Tile lookups we'll need for blob wang
 		int[][] _blob_wang_tiles = [[2, 1, 4, 8],[6, 9, 4, 8],[3, 1, 12, 8],[7, 9, 12, 8],[15, 9, 12, 8],[2, 3, 4, 12],[6, 11, 4, 12],[6, 15, 4, 12],

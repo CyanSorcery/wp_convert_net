@@ -17,6 +17,7 @@ class MiniPak
 	{
 		try
 		{
+
 			//Don't load this if it's too old
 			if (file_version < MinVersion)
 				throw new Exception($"Worldpak is too old. Must be version {MinVersion} or newer, but worldpak is version {file_version}.");
@@ -64,8 +65,28 @@ class MiniPak
 			outputString += "}";
 
 			File.WriteAllText("r_levels.lua", outputString);
-			
+
 			Console.WriteLine($"Converted {stage_count} stage(s) across {pak_worlds.Length} world(s)");
+
+			//Get ready to convert all the puzzle element/tile lookups into a pico8 map
+			Grid metatileGrid = new(128, 32, 0);
+
+			int finX, finY;
+			int[] finLUT;
+
+			for (int x = 0; x < 16; x++)
+				for (int y = 0; y < 16; y++)
+				{
+					finX = (48 + x) * 2;
+					finY = y * 2;
+					finLUT = Tiles.GetLUT((x * 16) + y);
+					metatileGrid.Set(finX, finY, finLUT[0]);
+					metatileGrid.Set(finX + 1, finY, finLUT[1]);
+					metatileGrid.Set(finX, finY + 1, finLUT[2]);
+					metatileGrid.Set(finX + 1, finY + 1, finLUT[3]);
+				}
+
+			File.WriteAllText("map_lut.p8", $"pico-8 cartridge // http://www.pico-8.com\r\nversion 42\r\n__map__\r\n{metatileGrid.Pack(true)}");
 
 		}
 		catch (Exception e)
@@ -357,9 +378,6 @@ public class MiniStage
 			_parsed_hints.Add((byte)((_arrow >> 4) & 0x3));
 		}
 
-		//Remove first hint, since the player wont see it
-		//_parsed_hints.RemoveAt(0);
-
 		//Find out how many moves the are in the replay array
 		//Gamemaker stores the bytes flipped, so we have to flip them back
 		int _move_count = (_replay_data[1] << 8) | _replay_data[0];
@@ -401,45 +419,3 @@ public class MiniStage
 		return Math.Floor(_t).ToString().PadLeft(3, '0') + "." + Math.Floor((_t % 1) * 10000).ToString().PadRight(4, '0');
 	}
 }
-
-/*
-// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-
-    public class WorldStage
-    {
-        public bool stage_finalized { get; set; }
-        public bool stage_dark { get; set; }
-        public double stage_move_count { get; set; }
-        public double stage_actual_moves { get; set; }
-        public bool stage_special { get; set; }
-        public double stage_hint_count { get; set; }
-        public List<object> stage_cameras { get; set; }
-        public bool stage_unlock_zoom { get; set; }
-        public string stage_start_state { get; set; }
-        public string stage_theme { get; set; }
-        public double stage_tile_count { get; set; }
-    }
-    public class PakWorld
-    {
-        public List<WorldStage> world_stages { get; set; }
-        public double world_required_stars { get; set; }
-        public string world_name { get; set; }
-        public string world_id { get; set; }
-        public string world_theme { get; set; }
-    }
-
-    public class Root
-    {
-        
-        public double pak_error_code { get; set; }
-        public double pak_version { get; set; }
-        public double pak_save_time { get; set; }
-        public string pak_desc { get; set; }
-        public string pak_author { get; set; }
-        public double pak_modio_id { get; set; }
-        public double pak_cache_worldcount { get; set; }
-        public double pak_cache_stagecount { get; set; }
-    }
-
-
-*/

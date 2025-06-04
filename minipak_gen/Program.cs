@@ -30,7 +30,7 @@ class Program
         {
             MiniPak _worldpak = JsonSerializer.Deserialize<MiniPak>(File.ReadAllText(_worldpak_path)) ?? throw new Exception("Could not read worldpak file.");
 
-			Console.WriteLine("Loaded file {0}: {0}", _worldpak_path, _worldpak.pak_name);
+            Console.WriteLine("Loaded file {0}: {0}", _worldpak_path, _worldpak.pak_name);
 
             //Convert the worldpak to be used on pico8
             _worldpak.ToPico8();
