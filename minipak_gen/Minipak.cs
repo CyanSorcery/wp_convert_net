@@ -34,7 +34,7 @@ class MiniPak
 					//Too many stages?
 					if (stage_count >= 60)
 						throw new Exception("Too many stages in the given worldpak! The limit is 60.");
-					
+
 					//Prevent the save ID from being out of range
 					stage.save_slot = Math.Clamp((int)stage.stage_id, 0, 59);
 
@@ -47,6 +47,26 @@ class MiniPak
 					stage.ToPico8();
 				}
 			}
+
+			//Now, go through and make a string out of all of them
+			string outputString = $"g_cart_name = \"{pak_id}\"\r\ng_levels = {{\r\n";
+			MiniStage[] miniStages;
+			for (int world = 0; world < pak_worlds.Length; world++)
+			{
+				outputString += "{\r\n";
+				miniStages = pak_worlds[world].world_stages;
+
+				for (int stage = 0; stage < miniStages.Length; stage++)
+					outputString += $"\"{miniStages[stage].MiniString}\"" + (stage + 1 < miniStages.Length ? "," : "") + "\r\n";
+
+				outputString += "}" + (world + 1 < pak_worlds.Length ? "," : "") + "\r\n";
+			}
+			outputString += "}";
+
+			File.WriteAllText("r_levels.lua", outputString);
+			
+			Console.WriteLine($"Converted {stage_count} stage(s) across {pak_worlds.Length} world(s)");
+
 		}
 		catch (Exception e)
 		{
@@ -91,6 +111,7 @@ public class MiniStage
 			throw new Exception($"Stage {stage_name} is too large! Must be 16x15 or less.");
 
 		//Start creating the ministage data
+		MiniString = "";
 
 		//Stage name
 		MiniString += PicoLabel(stage_name);
@@ -99,7 +120,7 @@ public class MiniStage
 		//Stage width (minus 1)
 		MiniString += Math.Clamp((int)stage_width - 1, 0, 15).ToString("x");
 		//Stage save slot
-		MiniString += save_slot.ToString("x").PadLeft(2, '0');
+		MiniString += save_slot.ToString().PadLeft(2, '0');
 		//The stage target time
 		MiniString += PicoTimeFormat(stage_target_time);
 		//The stage dev time
@@ -156,7 +177,7 @@ public class MiniStage
 			//Triangle
 			if (_tile_id == Tiles.ElementToBitmask(2, 2)) _objects.Add($"3{_poskey}55");
 			//Coin
-			if (_tile_id == Tiles.ElementToBitmask(2, 2)) _objects.Add($"4{_poskey}56");
+			if (_tile_id == Tiles.ElementToBitmask(2, 3)) _objects.Add($"4{_poskey}56");
 			//Octogem (encode index in sprite)
 			if (_ele_id == 15) _objects.Add($"5{_poskey}0" + _sub_id.ToString("x"));
 			//Normal state
@@ -292,7 +313,7 @@ public class MiniStage
 							(_wall_ele_grid.Get(_xr, _yb) << 7)
 						];
 
-						if (_tile_id < 255)
+						if (_tile_id > 0)
 							_ele_grid.Set(_x, _y, _remap[_tile_id]);
 					}
 				}
@@ -311,8 +332,6 @@ public class MiniStage
 			+ _obj_str
 			+ _tile_count.ToString("x").PadLeft(2, '0')
 			+ _ele_grid.Pack();
-
-		Console.WriteLine(MiniString);
 	}
 
 	private string PicoHintArrows(int _start_x, int _start_y)
