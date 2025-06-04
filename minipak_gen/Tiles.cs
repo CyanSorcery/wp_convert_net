@@ -69,7 +69,7 @@ public static class Tiles
 	{
 		//Pre-fill the dictionary with default values
 		for (int i = 0; i < 256; i++)
-			LUT[i] = [0, 0, 0, 0];
+			LUT[i] = [-1, -1, -1, -1];
 
 		//Blank tile player can step on
 		LUT[ElementToBitmask(1, 0)] = GetMirroredTile(16);
@@ -195,7 +195,7 @@ public static class Tiles
 		//Fill out any remaining tiles with a blank set
 		int[] _dummy_set = GetSingleTile(15);
 		for (int i = 1; i < 256; i++)
-			if (LUT[i][0] == 0)
+			if (LUT[i][0] == -1)
 				LUT[i] = _dummy_set;
 	}
 

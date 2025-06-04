@@ -8,6 +8,7 @@
     <DebugType>embedded</DebugType>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>false</SelfContained>
+    <PublishDir>D:\Dropbox\Homebase\pico8\blobun_mini</PublishDir>
   </PropertyGroup>
   
 

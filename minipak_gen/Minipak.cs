@@ -407,7 +407,7 @@ public class MiniStage
 	{
 		//Note: this currently doesn't convert out of bounds characters to ascii
 		//first, limit this to 16 characters
-		_str = _str.Substring(0, Math.Min(16, _str.Length)).ToLower();
+		_str = _str[..Math.Min(16, _str.Length)].ToLower();
 
 		if (_str == "") _str = "unset";
 
