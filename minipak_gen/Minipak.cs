@@ -251,6 +251,9 @@ public class MiniStage
 			//If this is a valid floor, add to the tile count
 			if (_tile_id > 0) _tile_count++;
 
+			//If this is a slime trap floor, add one more to the tile count
+			if (_tile_id == Tiles.ElementToBitmask(9, 4)) _tile_count++;
+
 			//Place the tile into the grid
 			_ele_grid.Set(_dst_x, _dst_y, _tile_id);
 		}
