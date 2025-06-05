@@ -10,7 +10,10 @@
     <SelfContained>false</SelfContained>
     <PublishDir>D:\Dropbox\Homebase\pico8\blobun_mini</PublishDir>
   </PropertyGroup>
-  
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartArguments>-i "C:\Users\spark\AppData\Local\Blobun\worldpak\usermade\pak_cyansorcery_pico8wp.json" -o "D:\Dropbox\Homebase\pico8\blobun_mini\res\r_levels.lua" -m "D:\Dropbox\Homebase\pico8\blobun_mini\res\map_lut.p8"</StartArguments>
+  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Kitsusu\Kitsusu.csproj" />

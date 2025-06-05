@@ -71,6 +71,9 @@ public static class Tiles
 		for (int i = 0; i < 256; i++)
 			LUT[i] = [-1, -1, -1, -1];
 
+		//Blank out the first tile
+		LUT[0] = GetSingleTile(0);
+
 		//Blank tile player can step on
 		LUT[ElementToBitmask(1, 0)] = GetMirroredTile(16);
 		//Second blank tile
@@ -194,7 +197,7 @@ public static class Tiles
 
 		//Fill out any remaining tiles with a blank set
 		int[] _dummy_set = GetSingleTile(15);
-		for (int i = 1; i < 256; i++)
+		for (int i = 0; i < 256; i++)
 			if (LUT[i][0] == -1)
 				LUT[i] = _dummy_set;
 	}
