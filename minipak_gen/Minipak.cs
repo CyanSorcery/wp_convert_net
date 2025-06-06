@@ -71,7 +71,7 @@ class MiniPak
 			if (destMap != null)
 			{
 				//Get ready to convert all the puzzle element/tile lookups into a pico8 map
-				Grid metatileGrid = new(128, 32, 0);
+				Grid<int> metatileGrid = new(128, 32, 0);
 
 				int finX, finY;
 				int[] finLUT;
@@ -172,7 +172,7 @@ public class MiniStage
 		string[] _floor_portals = ["", "", "", ""];
 
 		//Create a grid to hold the puzzle elements, with padding to hold the borders
-		Grid _ele_grid = new(_puzz_w + 2, _puzz_h + 2);
+		Grid<int> _ele_grid = new(_puzz_w + 2, _puzz_h + 2, 0);
 
 		//How many tiles the player must touch in this puzzle
 		int _tile_count = 0;
@@ -263,7 +263,7 @@ public class MiniStage
 		_puzz_h += 2;
 
 		//Create an autotile grid to use as reference for wall generation
-		Grid _wall_ele_grid = new(_puzz_w, _puzz_h, 0);
+		Grid<int> _wall_ele_grid = new(_puzz_w, _puzz_h, 0);
 		_wall_ele_grid.CopyFrom(_ele_grid, 0, 0, _puzz_w, _puzz_h, 0, 0);
 
 		//For each element of the grid, prep it for autotiling
