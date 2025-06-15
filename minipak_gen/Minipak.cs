@@ -25,6 +25,9 @@ class MiniPak
 			//Count up how many stages there are
 			int stage_count = 0;
 
+			//World required to beat table
+			string beat_requirements = "";
+
 			//Check all stages for conflicting save IDs
 			foreach (MiniWorld world in pak_worlds)
 			{
@@ -47,10 +50,11 @@ class MiniPak
 					//Convert this into a string for pico8
 					stage.ToPico8();
 				}
+				beat_requirements += ((int)world.world_required_stars).ToString("x");
 			}
 
 			//Now, go through and make a string out of all of them
-			string outputString = $"g_cart_name = \"{pak_id}\"\r\ng_levels = {{\r\n";
+			string outputString = $"g_cart_name = \"{pak_id}\"\r\ng_w_req = \"{beat_requirements}\"\r\ng_levels = {{\r\n";
 			MiniStage[] miniStages;
 			for (int world = 0; world < pak_worlds.Length; world++)
 			{
@@ -106,6 +110,8 @@ class MiniPak
 public class MiniWorld
 {
 	public MiniStage[] world_stages { get; set; } = [new MiniStage()];
+
+	public float world_required_stars { get; set; } = 0;
 }
 
 public class MiniStage
