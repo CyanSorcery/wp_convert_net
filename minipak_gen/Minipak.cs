@@ -348,7 +348,7 @@ public class MiniStage
 							(_wall_ele_grid.Get(_xr, _yb) << 7)
 						];
 
-						if (_tile_id > 0)
+						//if (_tile_id > 0)
 							_ele_grid.Set(_x, _y, _remap[_tile_id]);
 					}
 				}
