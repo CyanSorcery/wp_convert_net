@@ -386,10 +386,10 @@ public class MiniStage
 			_arrow = _replay_data[i];
 			//for (int j = 0; j < 8; j += 2)
 			//	_parsed_hints.Add((byte)((_arrow >> j) & 0x3));
-			_parsed_hints.Add((byte)((_arrow >> 2) & 0x3));
 			_parsed_hints.Add((byte)((_arrow >> 0) & 0x3));
-			_parsed_hints.Add((byte)((_arrow >> 6) & 0x3));
+			_parsed_hints.Add((byte)((_arrow >> 2) & 0x3));
 			_parsed_hints.Add((byte)((_arrow >> 4) & 0x3));
+			_parsed_hints.Add((byte)((_arrow >> 6) & 0x3));
 		}
 
 		//Find out how many moves the are in the replay array
