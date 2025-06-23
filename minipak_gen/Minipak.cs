@@ -202,14 +202,15 @@ public class MiniStage
 				_player_start_y = _dst_y;
 			}
 
+			//Note: Disabled pre-processing of these to save on compressed characters in the regular game
 			//Heart
-			if (_tile_id == Tiles.ElementToBitmask(2, 0)) _objects.Add($"1{_poskey}53");
+			//if (_tile_id == Tiles.ElementToBitmask(2, 0)) _objects.Add($"1{_poskey}53");
 			//Diamond
-			if (_tile_id == Tiles.ElementToBitmask(2, 1)) _objects.Add($"2{_poskey}54");
+			//if (_tile_id == Tiles.ElementToBitmask(2, 1)) _objects.Add($"2{_poskey}54");
 			//Triangle
-			if (_tile_id == Tiles.ElementToBitmask(2, 2)) _objects.Add($"3{_poskey}55");
+			//if (_tile_id == Tiles.ElementToBitmask(2, 2)) _objects.Add($"3{_poskey}55");
 			//Coin
-			if (_tile_id == Tiles.ElementToBitmask(2, 3)) _objects.Add($"4{_poskey}56");
+			//if (_tile_id == Tiles.ElementToBitmask(2, 3)) _objects.Add($"4{_poskey}56");
 			//Octogem (encode index in sprite)
 			if (_ele_id == 15) _objects.Add($"5{_poskey}0" + _sub_id.ToString("x"));
 			//Normal state
